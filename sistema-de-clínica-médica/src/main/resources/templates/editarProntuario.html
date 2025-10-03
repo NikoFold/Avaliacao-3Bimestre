@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <title>Editar Prontuário</title>
+        <link href="/css/styles.css" rel="stylesheet">
+        <script src="/js/script.js"></script>
+    </head>
+    <body>
+        <!-- Insere a navbar -->
+        <div th:insert="fragments/barraNavegacao :: navbar"></div>
+   
+        <!-- Insere as messages -->
+        <div th:insert="fragments/message :: message"></div>
+
+        <h1>Editar Prontuário</h1>
+   
+        <form th:action="@{/prontuario/update}" th:object="${prontuario}" method="post">
+        <input type="hidden" th:field="*{id}" />
+
+        <label>Número:</label>
+        <input type="text" th:field="*{numeroProntuario}" /><br/>
+
+        <label>Alergias:</label>
+        <input type="text" th:field="*{alergias}" /><br/>
+
+        <label>Doenças Pré-existentes:</label>
+        <input type="text" th:field="*{doencasPreexistentes}" /><br/>
+
+        <label>Medicamentos em Uso:</label>
+        <input type="text" th:field="*{medicamentosEmUso}" /><br/>
+
+        <label>Histórico Clínico:</label>
+        <textarea th:field="*{historicoClinico}"></textarea><br/>
+        
+ <!-- Submit Button -->
+            <button type="submit">Salvar Alterações</button>
+            <a th:href="@{/prontuario/list}"><button type="button">Cancelar</button></a>
+        </form>
+     </body>
+</html>

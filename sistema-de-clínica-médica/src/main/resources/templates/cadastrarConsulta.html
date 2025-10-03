@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+	<head>
+	    <title>Cadastro</title>
+	    <link href="/css/styles.css" rel="stylesheet">
+	    <script src="/js/script.js"></script>
+	</head>
+	<body>
+		<!-- Insere a navbar -->
+	    <div th:insert="fragments/barraNavegacao :: navbar"></div>
+	   
+	    <!-- Insere as messages -->
+	    <div th:insert="fragments/message :: message"></div>
+
+	    <h1>Cadastrar Consulta</h1>
+	   
+	    <form th:action="@{/consulta/save}" th:object="${consulta}" method="post">
+        <label>Data e Hora:</label>
+        <input type="datetime-local" th:field="*{dataHora}" /><br/>
+
+        <label>Médico Responsável:</label>
+        <input type="text" th:field="*{medicoResponsavel}" /><br/>
+
+        <label>Motivo:</label>
+        <input type="text" th:field="*{motivoConsulta}" /><br/>
+
+        <label>Diagnóstico:</label>
+        <input type="text" th:field="*{diagnostico}" /><br/>
+
+        <label>Prescrição:</label>
+        <input type="text" th:field="*{prescricao}" /><br/>
+
+        <label>Status:</label>
+        <select th:field="*{status}">
+            <option value="AGENDADA">Agendada</option>
+            <option value="REALIZADA">Realizada</option>
+            <option value="CANCELADA">Cancelada</option>
+        </select><br/>
+	        
+ <!-- Submit Button -->
+           	<button type="submit">Salvar</button>
+           	<button type="submit">Cancelar</button>
+		   
+	    </form>
+	</body>
+</html>

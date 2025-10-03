@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<title>Lista de Prontuários</title>
+<link rel="stylesheet" href="/css/styles.css">
+</head>
+<body>
+	<div th:replace="fragments/barraNavegacao :: navbar"></div>
+	<div th:replace="fragments/message :: message"></div>
+
+	<h2>Lista de Prontuário</h2>
+	<table border="1" cellpadding="5" cellspacing="0">
+		<thead>
+			<tr>
+				<th>Número</th>
+				<th>Alergias</th>
+				<th>Doenças</th>
+				<th>Medicamentos</th>
+				<th>Histórico</th>
+				<th>Ações</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr th:each="prontuario : ${prontuarios}">
+                <td th:text="${prontuario.numeroProntuario}"></td>
+                <td th:text="${prontuario.alergias}"></td>
+                <td th:text="${prontuario.doencasPreexistentes}"></td>
+                <td th:text="${prontuario.medicamentosEmUso}"></td>
+                <td th:text="${prontuario.historicoClinico}"></td>
+            <td>
+                <a th:href="@{/prontuario/edit/{id}(id=${prontuario.id})}">Editar</a> |
+                <a th:href="@{/prontuario/delete/{id}(id=${prontuario.id})}">Excluir</a>
+            </td>
+			</tr>
+		</tbody>
+	</table>
+</body>
+</html>
