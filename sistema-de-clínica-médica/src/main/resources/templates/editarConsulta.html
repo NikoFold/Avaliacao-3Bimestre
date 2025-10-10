@@ -18,19 +18,19 @@
         <input type="hidden" th:field="*{id}" />
 
         <label>Data e Hora:</label>
-        <input type="datetime-local" th:field="*{dataHora}" /><br/>
+        <input type="datetime-local" th:field="*{dataHora}" required/><br/>
 
         <label>Médico Responsável:</label>
-        <input type="text" th:field="*{medicoResponsavel}" /><br/>
+        <input type="text" th:field="*{medicoResponsavel}" required/><br/>
 
         <label>Motivo:</label>
-        <input type="text" th:field="*{motivoConsulta}" /><br/>
+        <input type="text" th:field="*{motivoConsulta}" required/><br/>
 
         <label>Diagnóstico:</label>
-        <input type="text" th:field="*{diagnostico}" /><br/>
+        <input type="text" th:field="*{diagnostico}" required/><br/>
 
         <label>Prescrição:</label>
-        <input type="text" th:field="*{prescricao}" /><br/>
+        <input type="text" th:field="*{prescricao}" required/><br/>
 
         <label>Status:</label>
         <select th:field="*{status}">

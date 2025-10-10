@@ -8,9 +8,11 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import clinica.com.entity.Consulta;
 import clinica.com.service.ConsultaService;
+import clinica.com.service.PacienteService;
 
 @Controller
 @RequestMapping("/consulta")
@@ -18,17 +20,26 @@ public class ConsultaController {
 
     @Autowired
     private ConsultaService consultaService;
+    
+    @Autowired
+    private PacienteService pacienteService;
 
     @GetMapping("/form")
     public String form(Model model) {
         model.addAttribute("consulta", new Consulta());
+        model.addAttribute("pacientes", pacienteService.list());
         return "cadastrarConsulta";
     }
 
     @PostMapping("/save")
-    public String save(@ModelAttribute Consulta consulta, Model model) {
+    public String save(@ModelAttribute Consulta consulta, @RequestParam("pacienteId") Long pacienteId, Model model) {
+    	if (pacienteId != null) {
+    		consulta.setPaciente(pacienteService.findById(pacienteId));
+    	}
+    	
         consultaService.save(consulta);
         model.addAttribute("mensagemSucesso", "Consulta salva com sucesso");
+        model.addAttribute("pacientes", pacienteService.list());
         return form(model);
     }
 

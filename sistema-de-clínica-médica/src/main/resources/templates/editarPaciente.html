@@ -18,19 +18,19 @@
         <input type="hidden" th:field="*{id}" />
 
         <label>Nome:</label>
-        <input type="text" th:field="*{nome}" /><br/>
+        <input type="text" th:field="*{nome}" required/><br/>
 
         <label>Email:</label>
-        <input type="email" th:field="*{email}" /><br/>
+        <input type="email" th:field="*{email}" required/><br/>
 
         <label>Telefone:</label>
-        <input type="text" th:field="*{telefone}" /><br/>
+        <input type="text" th:field="*{telefone}" required/><br/>
 
         <label>Data Nascimento:</label>
-        <input type="date" th:field="*{dataNascimento}" /><br/>
+        <input type="date" th:field="*{dataNascimento}" required/><br/>
 
         <label>Sexo:</label>
-        <input type="text" th:field="*{sexo}" /><br/>
+        <input type="text" th:field="*{sexo}" required/><br/>
         
  <!-- Submit Button -->
             <button type="submit">Salvar Alterações</button>

@@ -18,19 +18,19 @@
         <input type="hidden" th:field="*{id}" />
 
         <label>Número:</label>
-        <input type="text" th:field="*{numeroProntuario}" /><br/>
+        <input type="text" th:field="*{numeroProntuario}" required/><br/>
 
         <label>Alergias:</label>
-        <input type="text" th:field="*{alergias}" /><br/>
+        <input type="text" th:field="*{alergias}" required/><br/>
 
         <label>Doenças Pré-existentes:</label>
-        <input type="text" th:field="*{doencasPreexistentes}" /><br/>
+        <input type="text" th:field="*{doencasPreexistentes}" required/><br/>
 
         <label>Medicamentos em Uso:</label>
-        <input type="text" th:field="*{medicamentosEmUso}" /><br/>
+        <input type="text" th:field="*{medicamentosEmUso}" required/><br/>
 
         <label>Histórico Clínico:</label>
-        <textarea th:field="*{historicoClinico}"></textarea><br/>
+        <textarea th:field="*{historicoClinico}" required></textarea><br/>
         
  <!-- Submit Button -->
             <button type="submit">Salvar Alterações</button>

@@ -27,9 +27,13 @@ public class PacienteController {
 
     @PostMapping("/save")
     public String save(@ModelAttribute Paciente paciente, Model model) {
-        pacienteService.save(paciente);
-        model.addAttribute("mensagemSucesso", "Paciente salvo com sucesso");
-        return form(model);
+        try {
+        	pacienteService.save(paciente);
+            model.addAttribute("mensagemSucesso", "Paciente salvo com sucesso");
+        } catch (Exception e) {
+        	model.addAttribute("mensagemErro", e.getMessage());
+        }
+            return form(model);
     }
 
     @GetMapping("/list")
@@ -46,8 +50,12 @@ public class PacienteController {
 
     @PostMapping("/update")
     public String update(@ModelAttribute Paciente paciente, Model model) {
-        pacienteService.save(paciente);
-        model.addAttribute("mensagemSucesso", "Paciente atualizado com sucesso");
+        try {
+        	pacienteService.save(paciente);
+        	model.addAttribute("mensagemSucesso", "Paciente atualizado com sucesso");
+        } catch (Exception e) {
+        	model.addAttribute("mensagemErro", e.getMessage());
+        }
         model.addAttribute("pacientes", pacienteService.list());
         return "listarPaciente";
     }

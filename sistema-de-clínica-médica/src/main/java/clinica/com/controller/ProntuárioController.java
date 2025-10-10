@@ -8,8 +8,10 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import clinica.com.entity.Prontuário;
+import clinica.com.service.PacienteService;
 import clinica.com.service.ProntuárioService;
 
 @Controller
@@ -18,17 +20,26 @@ public class ProntuárioController {
 
     @Autowired
     private ProntuárioService prontuarioService;
+    
+    @Autowired
+    private PacienteService pacienteService;
 
     @GetMapping("/form")
     public String form(Model model) {
         model.addAttribute("prontuario", new Prontuário());
+        model.addAttribute("pacientes", pacienteService.list());
         return "cadastrarProntuario";
     }
 
     @PostMapping("/save")
-    public String save(@ModelAttribute Prontuário prontuario, Model model) {
-        prontuarioService.save(prontuario);
+    public String save(@ModelAttribute Prontuário prontuario, @RequestParam("pacienteId") Long pacienteId, Model model) {
+        if (pacienteId != null) {
+        	prontuario.setPaciente(pacienteService.findById(pacienteId));
+        }
+    	
+    	prontuarioService.save(prontuario);
         model.addAttribute("mensagemSucesso", "Prontuário salvo com sucesso");
+        model.addAttribute("pacientes", pacienteService.list());
         return form(model);
     }
 

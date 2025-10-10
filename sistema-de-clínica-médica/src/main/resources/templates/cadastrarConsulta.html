@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 	<head>
-	    <title>Cadastro</title>
+	    <title>Cadastro de Consulta</title>
 	    <link href="/css/styles.css" rel="stylesheet">
 	    <script src="/js/script.js"></script>
 	</head>
@@ -15,28 +15,37 @@
 	    <h1>Cadastrar Consulta</h1>
 	   
 	    <form th:action="@{/consulta/save}" th:object="${consulta}" method="post">
-        <label>Data e Hora:</label>
-        <input type="datetime-local" th:field="*{dataHora}" /><br/>
+        
+		<label>Paciente:</label>
+	    <select name="pacienteId" required>
+			<option value="">-- Selecione um Paciente --</option>
+			<option th:each="p : ${pacientes}"
+			        th:value="${p.id}"
+			        th:text="${p.nome}"></option>
+		</select><br/>
+			
+		<label>Data e Hora:</label>
+        <input type="datetime-local" th:field="*{dataHora}" required/><br/>
 
         <label>Médico Responsável:</label>
-        <input type="text" th:field="*{medicoResponsavel}" /><br/>
+        <input type="text" th:field="*{medicoResponsavel}" required/><br/>
 
         <label>Motivo:</label>
-        <input type="text" th:field="*{motivoConsulta}" /><br/>
+        <input type="text" th:field="*{motivoConsulta}" required/><br/>
 
         <label>Diagnóstico:</label>
-        <input type="text" th:field="*{diagnostico}" /><br/>
+        <input type="text" th:field="*{diagnostico}" required/><br/>
 
         <label>Prescrição:</label>
-        <input type="text" th:field="*{prescricao}" /><br/>
+        <input type="text" th:field="*{prescricao}" required/><br/>
 
         <label>Status:</label>
-        <select th:field="*{status}">
+        <select th:field="*{status}" required>
             <option value="AGENDADA">Agendada</option>
             <option value="REALIZADA">Realizada</option>
             <option value="CANCELADA">Cancelada</option>
         </select><br/>
-	        
+	    
  <!-- Submit Button -->
            	<button type="submit">Salvar</button>
            	<button type="submit">Cancelar</button>
