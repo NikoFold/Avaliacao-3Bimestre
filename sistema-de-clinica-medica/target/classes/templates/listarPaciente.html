@@ -25,7 +25,7 @@
                 <td th:text="${paciente.nome}"></td>
                 <td th:text="${paciente.email}"></td>
                 <td th:text="${paciente.telefone}"></td>
-                <td th:text="${paciente.dataNascimento}"></td>
+                <td th:text="${#temporals.format(paciente.dataNascimento, 'dd/MM/yyyy')}"></td>
                 <td th:text="${paciente.sexo}"></td>
                 
             <td>

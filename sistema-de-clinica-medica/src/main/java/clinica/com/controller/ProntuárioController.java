@@ -65,7 +65,11 @@ public class ProntuárioController {
 
     @GetMapping("/delete/{id}")
     public String delete(@PathVariable Long id, Model model) {
-        prontuarioService.deleteById(id);
+    	Prontuário prontuario = prontuarioService.findById(id);
+        if (prontuario.getPaciente() != null) {
+            prontuario.getPaciente().setProntuario(null);
+        }
+    	prontuarioService.deleteById(id);
         model.addAttribute("prontuarios", prontuarioService.list());
         model.addAttribute("mensagemSucesso", "Prontuário removido com sucesso");
         return "listarProntuario";

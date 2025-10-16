@@ -22,7 +22,7 @@ public class Prontuário {
     private String historicoClinico;
 
     @OneToOne
-    @JoinColumn(name = "paciente_id")
+    @JoinColumn(name = "paciente_id", nullable = true)
     private Paciente paciente;
 
 	public Long getId() {

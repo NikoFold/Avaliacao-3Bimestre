@@ -33,7 +33,7 @@
                 <td th:text="${consulta.status}"></td>
             <td>
                 <a th:href="@{/consulta/edit/{id}(id=${consulta.id})}">Editar</a> |
-                <a th:href="@{/consulta/delete/{id}(id=${consulta.id})}">Excluir</a>
+                <a th:href="@{/consulta/delete/{id}(id=${consulta.id})}" onclick="return confirm('Tem certeza que deseja excluir?')">Excluir</a>
             </td>
 			</tr>
 		</tbody>

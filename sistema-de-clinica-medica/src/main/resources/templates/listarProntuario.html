@@ -31,7 +31,7 @@
                 <td th:text="${prontuario.historicoClinico}"></td>
             <td>
                 <a th:href="@{/prontuario/edit/{id}(id=${prontuario.id})}">Editar</a> |
-                <a th:href="@{/prontuario/delete/{id}(id=${prontuario.id})}">Excluir</a>
+                <a th:href="@{/prontuario/delete/{id}(id=${prontuario.id})}" onclick="return confirm('Tem certeza que deseja excluir?')">Excluir</a>
             </td>
 			</tr>
 		</tbody>

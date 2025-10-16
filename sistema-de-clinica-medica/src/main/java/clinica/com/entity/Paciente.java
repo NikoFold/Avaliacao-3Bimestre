@@ -25,7 +25,7 @@ public class Paciente {
     private LocalDate dataNascimento;
     private String sexo;
 
-    @OneToOne(mappedBy = "paciente", cascade = CascadeType.ALL)
+    @OneToOne(mappedBy = "paciente", orphanRemoval = true)
     private Prontuário prontuário;
 
     @OneToMany(mappedBy = "paciente", cascade = CascadeType.ALL)
