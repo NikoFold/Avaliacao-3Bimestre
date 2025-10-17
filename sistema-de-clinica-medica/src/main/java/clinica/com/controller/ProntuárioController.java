@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import clinica.com.entity.Paciente;
 import clinica.com.entity.Prontuário;
 import clinica.com.service.PacienteService;
 import clinica.com.service.ProntuárioService;
@@ -33,13 +34,26 @@ public class ProntuárioController {
 
     @PostMapping("/save")
     public String save(@ModelAttribute Prontuário prontuario, @RequestParam("pacienteId") Long pacienteId, Model model) {
-        if (pacienteId != null) {
-        	prontuario.setPaciente(pacienteService.findById(pacienteId));
+        Prontuário prontuarioExistente = prontuarioService.findByPacienteId(pacienteId);
+
+        if (prontuarioExistente != null) {
+            model.addAttribute("mensagemErro", "O paciente já possui um prontuário cadastrado.");
+            model.addAttribute("prontuario", prontuario);
+            model.addAttribute("pacientes", pacienteService.list());
+            return "cadastrarProntuario";
         }
-    	
-    	prontuarioService.save(prontuario);
+
+        Paciente paciente = pacienteService.findById(pacienteId);
+        if (paciente == null) {
+            model.addAttribute("mensagemErro", "Paciente selecionado é inválido ou não foi encontrado.");
+            model.addAttribute("prontuario", prontuario);
+            model.addAttribute("pacientes", pacienteService.list());
+            return "cadastrarProntuario";
+        }
+
+        prontuario.setPaciente(paciente);
+        prontuarioService.save(prontuario);
         model.addAttribute("mensagemSucesso", "Prontuário salvo com sucesso");
-        model.addAttribute("pacientes", pacienteService.list());
         return form(model);
     }
 

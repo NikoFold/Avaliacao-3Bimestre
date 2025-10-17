@@ -11,8 +11,18 @@ public class ProntuárioService {
     @Autowired
     private ProntuárioRepository repo;
 
-    public Prontuário save(Prontuário p) { return repo.save(p); }
-    public List<Prontuário> list() { return repo.findAll(); }
-    public Prontuário findById(Long id) { return repo.findById(id).orElseThrow(); }
-    public void deleteById(Long id) { repo.deleteById(id); }
+    public Prontuário save(Prontuário p) { 
+    	return repo.save(p); }
+    
+    public List<Prontuário> list() { 
+    	return repo.findAll(); }
+    
+    public Prontuário findByPacienteId(Long pacienteId) { 
+    	return repo.findByPacienteId(pacienteId); }
+    
+    public Prontuário findById(Long id) {
+    	return repo.findById(id).orElse(null); }
+    
+    public void deleteById(Long id) { 
+    	repo.deleteById(id); }
 }
