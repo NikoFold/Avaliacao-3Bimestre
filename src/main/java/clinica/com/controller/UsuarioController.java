@@ -34,7 +34,7 @@ public class UsuarioController {
 		return "cadastrarUsuario";
 	}
 	
-	@PostMapping("save")
+	@PostMapping("/save")
 	public String saveUsuario(@ModelAttribute Usuario usuario, Model model, @RequestParam(required=false) List<Long> roles) {
 		if (usuario.getEmail() != null && usuarioService.existsByEmail(usuario.getEmail())) {
 			model.addAttribute("mensagemErro", "Usuário com e-mail " + usuario.getEmail() + " já existe");
@@ -47,6 +47,8 @@ public class UsuarioController {
 		}
 		usuarioService.save(usuario);
 			model.addAttribute("mensagemSucesso", "Usuário " + usuario.getNome() + " salvo com sucesso");
+			model.addAttribute("usuario", new Usuario());
+			model.addAttribute("roles", roleService.list());
 			return "cadastrarUsuario";
 		}
 	

@@ -1,7 +1,5 @@
 package clinica.com.controller;
 
-import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -34,6 +32,11 @@ public class RoleController {
 		if (!nome.startsWith("ROLE_")) {
 			nome = "ROLE_" + nome;
 		}
+		if (roleService.findByNome(nome) != null) {
+	        model.addAttribute("mensagemErro", "A role " + nome + " já existe");
+	        model.addAttribute("role", new Role());
+	        return "cadastrarRole";
+	    }
 		
 		role.setNome(nome);
 		
