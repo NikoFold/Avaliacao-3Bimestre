@@ -1,0 +1,118 @@
+/* ======== GERAL ======== */
+body {
+  padding-left: 230px;
+  font-family: "Poppins", "Lato", sans-serif;
+  background-color: #f4f7f6;
+  margin: 0;
+  color: #333;
+}
+
+/* ======== SIDENAV ======== */
+.sidenav {
+  height: 100vh;
+  width: 220px;
+  position: fixed;
+  top: 0;
+  left: 0;
+  background-color: #023e26;
+  box-shadow: 3px 0 10px rgba(0, 0, 0, 0.2);
+  overflow-x: hidden;
+  padding-top: 20px;
+  transition: all 0.3s ease;
+}
+
+/* ======== LINKS E BOTÕES ======== */
+.sidenav a, .dropdown-btn {
+  padding: 12px 20px;
+  text-decoration: none;
+  font-size: 16px;
+  color: #d1e7dd;
+  display: block;
+  border: none;
+  background: none;
+  width: 100%;
+  text-align: left;
+  cursor: pointer;
+  border-radius: 6px;
+  margin: 4px 0;
+  transition: all 0.2s ease;
+}
+
+.sidenav a:hover, .dropdown-btn:hover {
+  background-color: #046b3b;
+  color: #fff;
+  transform: translateX(3px);
+}
+
+/* ======== DROPDOWNS ======== */
+.dropdown-container {
+  display: none;
+  background-color: #03532d;
+  border-left: 3px solid #1ed760;
+  margin-left: 10px;
+  border-radius: 4px;
+}
+
+.dropdown-container a {
+  padding-left: 30px;
+  font-size: 15px;
+  color: #d1e7dd;
+}
+
+/* ======== BOTÃO ATIVO ======== */
+.active {
+  background-color: #1ed760 !important;
+  color: #fff !important;
+  font-weight: bold;
+}
+
+/* ======== CONTEÚDO PRINCIPAL ======== */
+.main {
+  margin-left: 230px;
+  padding: 20px;
+}
+
+h1, h2, h3 {
+  color: #023e26;
+}
+
+/* ======== BOTÃO LOGOUT ======== */
+a[href="/logout"] {
+  display: inline-block;
+  background-color: #dc3545;
+  color: white;
+  padding: 8px 16px;
+  border-radius: 5px;
+  text-decoration: none;
+  font-weight: 600;
+  transition: all 0.2s ease;
+}
+
+a[href="/logout"]:hover {
+  background-color: #bb2d3b;
+  transform: scale(1.05);
+}
+
+/* ======== RESPONSIVO ======== */
+@media screen and (max-width: 768px) {
+  .sidenav {
+    width: 180px;
+  }
+
+  .main {
+    margin-left: 190px;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .sidenav {
+    position: relative;
+    width: 100%;
+    height: auto;
+    box-shadow: none;
+  }
+
+  .main {
+    margin-left: 0;
+  }
+}
