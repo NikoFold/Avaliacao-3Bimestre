@@ -13,5 +13,4 @@ public class paginaPrincipal {
 	public String paginaPrincipal(Model model) {
 		return "paginaPrincipal";
 	}
-
 }

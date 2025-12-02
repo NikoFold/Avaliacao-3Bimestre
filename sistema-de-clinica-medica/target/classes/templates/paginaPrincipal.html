@@ -9,5 +9,9 @@
 	<!-- Insere a navbar -->
 	<div th:insert="fragments/barraNavegacao :: navbar"></div>
    <h1>Bem-vindo!</h1>
+   
+   <form th:action="@{/logout}" method="post">
+       <button type="submit">Sair</button>
+   </form>
 </body>
 </html>

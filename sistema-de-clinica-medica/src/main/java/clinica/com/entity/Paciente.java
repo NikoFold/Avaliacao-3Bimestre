@@ -26,7 +26,7 @@ public class Paciente {
     private String sexo;
 
     @OneToOne(mappedBy = "paciente", orphanRemoval = true)
-    private Prontuário prontuário;
+    private Prontuario prontuario;
 
     @OneToMany(mappedBy = "paciente", cascade = CascadeType.ALL)
     private List<Consulta> consultas;
@@ -79,12 +79,12 @@ public class Paciente {
 		this.sexo = sexo;
 	}
 
-	public Prontuário getProntuario() {
-		return prontuário;
+	public Prontuario getProntuario() {
+		return prontuario;
 	}
 
-	public void setProntuario(Prontuário prontuário) {
-		this.prontuário = prontuário;
+	public void setProntuario(Prontuario prontuario) {
+		this.prontuario = prontuario;
 	}
 
 	public List<Consulta> getConsultas() {

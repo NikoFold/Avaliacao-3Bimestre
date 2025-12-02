@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Editar Usuário</title>
+    <link href="/css/styles.css" rel="stylesheet">
+</head>
+<body>
+
+<div th:insert="fragments/barraNavegacao :: navbar"></div>
+<div th:insert="fragments/message :: message"></div>
+
+<h2>Editar Usuário</h2>
+
+<form th:action="@{/usuario/update}" th:object="${usuario}" method="post">
+
+    <input type="hidden" th:field="*{id}"/>
+
+    <label>Nome:</label>
+    <input type="text" th:field="*{nome}" required/>
+    <br/><br/>
+
+    <label>E-mail:</label>
+    <input type="email" th:field="*{email}" required/>
+    <br/><br/>
+
+    <label>Senha:</label>
+    <input type="password" th:field="*{senha}" placeholder="Digite uma nova senha" required/>
+    <br/><br/>
+
+    <label>Roles:</label>
+    <div th:each="r : ${roles}" required>
+        <input type="checkbox"
+               th:value="${r.id}"
+               name="roles"
+               th:checked="${usuario.roles.contains(r)}"> 
+        <span th:text="${r.nome}"></span>
+        <br/>
+    </div>
+
+    <br/>
+
+    <button type="submit">Salvar Alterações</button>
+
+    <a th:href="@{/usuario/list}">
+        <button type="button">Cancelar</button>
+    </a>
+</form>
+
+</body>
+</html>

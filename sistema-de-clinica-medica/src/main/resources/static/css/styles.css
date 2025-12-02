@@ -1,63 +1,118 @@
+/* ======== GERAL ======== */
 body {
-  padding-left: 225px;  
-  font-family: "Lato", sans-serif;
+  padding-left: 230px;
+  font-family: "Poppins", "Lato", sans-serif;
+  background-color: #f4f7f6;
+  margin: 0;
+  color: #333;
 }
 
-/* Fixed sidenav, full height */
+/* ======== SIDENAV ======== */
 .sidenav {
-  height: 100%;
-  width: 225px;
+  height: 100vh;
+  width: 220px;
   position: fixed;
-  z-index: 1;
   top: 0;
   left: 0;
-  background-color: #111;
+  background-color: #023e26;
+  box-shadow: 3px 0 10px rgba(0, 0, 0, 0.2);
   overflow-x: hidden;
   padding-top: 20px;
+  transition: all 0.3s ease;
 }
 
-/* Style the sidenav links and the dropdown button */
+/* ======== LINKS E BOTÕES ======== */
 .sidenav a, .dropdown-btn {
-  padding: 6px 8px 6px 16px;
+  padding: 12px 20px;
   text-decoration: none;
-  font-size: 20px;
-  color: #818181;
+  font-size: 16px;
+  color: #d1e7dd;
   display: block;
   border: none;
   background: none;
   width: 100%;
   text-align: left;
   cursor: pointer;
-  outline: none;
+  border-radius: 6px;
+  margin: 4px 0;
+  transition: all 0.2s ease;
 }
 
-/* On mouse-over */
 .sidenav a:hover, .dropdown-btn:hover {
-  color: #f1f1f1;
+  background-color: #046b3b;
+  color: #fff;
+  transform: translateX(3px);
 }
 
-/* Main content */
-.main {
-  margin-left: 200px; /* Same as the width of the sidenav */
-  font-size: 20px; /* Increased text to enable scrolling */
-  padding: 0px 35px;
-}
-
-/* Add an active class to the active dropdown button */
-.active {
-  background-color: green;
-  color: white;
-}
-
-/* Dropdown container (hidden by default). Optional: add a lighter background color and some left padding to change the design of the dropdown content */
+/* ======== DROPDOWNS ======== */
 .dropdown-container {
   display: none;
-  background-color: #262626;
-  padding-left: 8px;
+  background-color: #03532d;
+  border-left: 3px solid #1ed760;
+  margin-left: 10px;
+  border-radius: 4px;
 }
 
-/* Some media queries for responsiveness */
-@media screen and (max-height: 450px) {
-  .sidenav {padding-top: 15px;}
-  .sidenav a {font-size: 18px;}
+.dropdown-container a {
+  padding-left: 30px;
+  font-size: 15px;
+  color: #d1e7dd;
+}
+
+/* ======== BOTÃO ATIVO ======== */
+.active {
+  background-color: #1ed760 !important;
+  color: #fff !important;
+  font-weight: bold;
+}
+
+/* ======== CONTEÚDO PRINCIPAL ======== */
+.main {
+  margin-left: 230px;
+  padding: 20px;
+}
+
+h1, h2, h3 {
+  color: #023e26;
+}
+
+/* ======== BOTÃO LOGOUT ======== */
+a[href="/logout"] {
+  display: inline-block;
+  background-color: #dc3545;
+  color: white;
+  padding: 8px 16px;
+  border-radius: 5px;
+  text-decoration: none;
+  font-weight: 600;
+  transition: all 0.2s ease;
+}
+
+a[href="/logout"]:hover {
+  background-color: #bb2d3b;
+  transform: scale(1.05);
+}
+
+/* ======== RESPONSIVO ======== */
+@media screen and (max-width: 768px) {
+  .sidenav {
+    width: 180px;
+  }
+
+  .main {
+    margin-left: 190px;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .sidenav {
+    position: relative;
+    width: 100%;
+    height: auto;
+    box-shadow: none;
+  }
+
+  .main {
+    margin-left: 0;
+  }
 }
