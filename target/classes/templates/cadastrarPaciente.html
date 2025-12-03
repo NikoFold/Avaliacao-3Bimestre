@@ -17,18 +17,23 @@
 	    <form th:action="@{/paciente/save}" th:object="${paciente}" method="post">
         <label>Nome:</label>
         <input type="text" th:field="*{nome}" required/><br/>
+        <br/>
 
         <label>Email:</label>
         <input type="email" th:field="*{email}" required/><br/>
+        <br/>
 
         <label>Telefone:</label>
         <input type="text" th:field="*{telefone}" required/><br/>
+        <br/>
 
         <label>Data Nascimento:</label>
         <input type="date" th:field="*{dataNascimento}" required/><br/>
+        <br/>
 
         <label>Sexo:</label>
         <input type="text" th:field="*{sexo}" required/><br/>
+	    <br/>
 	        
  <!-- Submit Button -->
            	<button type="submit">Salvar</button>

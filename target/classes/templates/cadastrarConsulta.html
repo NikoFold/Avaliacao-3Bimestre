@@ -23,28 +23,34 @@
 			        th:value="${p.id}"
 			        th:text="${p.nome}"></option>
 		</select><br/>
-			
+		<br/>
 		<label>Data e Hora:</label>
         <input type="datetime-local" th:field="*{dataHora}" required/><br/>
-
+        <br/>
+        
         <label>Médico Responsável:</label>
         <input type="text" th:field="*{medicoResponsavel}" required/><br/>
-
+        <br/>
+        
         <label>Motivo:</label>
         <input type="text" th:field="*{motivoConsulta}" required/><br/>
-
+        <br/>
+        
         <label>Diagnóstico:</label>
         <input type="text" th:field="*{diagnostico}" required/><br/>
-
+        <br/>
+        
         <label>Prescrição:</label>
         <input type="text" th:field="*{prescricao}" required/><br/>
-
+        <br/>
+        
         <label>Status:</label>
         <select th:field="*{status}" required>
             <option value="AGENDADA">Agendada</option>
             <option value="REALIZADA">Realizada</option>
             <option value="CANCELADA">Cancelada</option>
         </select><br/>
+	    <br/>
 	    
  <!-- Submit Button -->
            	<button type="submit">Salvar</button>

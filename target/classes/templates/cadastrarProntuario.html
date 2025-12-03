@@ -23,21 +23,27 @@
 						th:value="${p.id}"
 						th:text="${p.nome}"></option>
 		</select><br/>
+		<br/>
 		
 		<label>Número:</label>
         <input type="text" th:field="*{numeroProntuario}" required/><br/>
+		<br/>
 
         <label>Alergias:</label>
         <input type="text" th:field="*{alergias}" required/><br/>
+		<br/>
 
         <label>Doenças Pré-existentes:</label>
         <input type="text" th:field="*{doencasPreexistentes}" required/><br/>
+		<br/>
 
         <label>Medicamentos em Uso:</label>
         <input type="text" th:field="*{medicamentosEmUso}" required/><br/>
+        <br/>
 
         <label>Histórico Clínico:</label>
         <textarea th:field="*{historicoClinico}" required></textarea><br/>
+	    <br/>
 	        
  <!-- Submit Button -->
            	<button type="submit">Salvar</button>
