@@ -15,7 +15,7 @@ public class SecurityConfig {
    @Bean
    public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
        http.authorizeHttpRequests(auth -> auth
-    		   .requestMatchers("/login", "/usuario/form", "/usuario/save", "/css/**", "/js/**").permitAll() // libera o acesso a essas páginas
+ .requestMatchers("/login", "/css/**", "/js/**").permitAll()
                .anyRequest().authenticated()
            )
            .formLogin(form -> form

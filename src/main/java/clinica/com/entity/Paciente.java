@@ -11,6 +11,8 @@ import jakarta.persistence.Id;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.PastOrPresent;
 
 @Entity
 @Table(name = "TB_PACIENTE")
@@ -22,6 +24,8 @@ public class Paciente {
     private String nome;
     private String email;
     private String telefone;
+    //PACIENTE NÃO NASCE NO FUTURO
+    @PastOrPresent(message = "A data de nascimento não pode ser uma data futura.")
     private LocalDate dataNascimento;
     private String sexo;
 

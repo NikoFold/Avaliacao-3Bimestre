@@ -22,6 +22,10 @@ public class PacienteService {
     	if (existenteTelefone != null && !existenteTelefone.getId().equals(p.getId())) {
     					throw new Exception("Já existe um paciente com este telefone.");
     	}
+    	//ADICIONADO PACIENTE N PODE NASCER NO FUTURO
+    	if (p.getDataNascimento() != null && p.getDataNascimento().isAfter(java.time.LocalDate.now())) {
+            throw new Exception("A data de nascimento não pode ser uma data futura.");
+        }
     	
     	return repo.save(p); }
     

@@ -9,6 +9,7 @@ import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
+import jakarta.validation.constraints.FutureOrPresent;
 
 @Entity
 @Table(name = "TB_CONSULTA")
@@ -17,6 +18,8 @@ public class Consulta {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    //CADASTRO NÃO PODE SER NO PASSADO
+    @FutureOrPresent(message = "A data de cadastro de consulta não pode ser uma data passada.")
     private LocalDateTime dataHora;
     private String medicoResponsavel;
     private String motivoConsulta;

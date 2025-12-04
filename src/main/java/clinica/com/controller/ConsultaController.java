@@ -1,5 +1,7 @@
 package clinica.com.controller;
 
+import java.time.LocalDateTime;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -32,15 +34,24 @@ public class ConsultaController {
     }
 
     @PostMapping("/save")
-    public String save(@ModelAttribute Consulta consulta, @RequestParam("pacienteId") Long pacienteId, Model model) {
-    	if (pacienteId != null) {
-    		consulta.setPaciente(pacienteService.findById(pacienteId));
-    	}
-    	
-        consultaService.save(consulta);
-        model.addAttribute("mensagemSucesso", "Consulta salva com sucesso");
+    public String save(
+            @ModelAttribute Consulta consulta,
+            @RequestParam("pacienteId") Long pacienteId,
+            Model model) {
+
+        if (pacienteId != null) {
+            consulta.setPaciente(pacienteService.findById(pacienteId));
+        }
+
+        try {
+            consultaService.save(consulta);
+            model.addAttribute("mensagemSucesso", "Consulta salva com sucesso");
+        } catch (Exception e) {
+            model.addAttribute("mensagemErro", e.getMessage());
+        }
+
         model.addAttribute("pacientes", pacienteService.list());
-        return form(model);
+        return "cadastrarConsulta";
     }
 
     @GetMapping("/list")
@@ -57,8 +68,14 @@ public class ConsultaController {
 
     @PostMapping("/update")
     public String update(@ModelAttribute Consulta consulta, Model model) {
-        consultaService.save(consulta);
-        model.addAttribute("mensagemSucesso", "Consulta atualizada com sucesso");
+
+        try {
+            consultaService.save(consulta);
+            model.addAttribute("mensagemSucesso", "Consulta atualizada com sucesso");
+        } catch (Exception e) {
+            model.addAttribute("mensagemErro", e.getMessage());
+        }
+
         model.addAttribute("consultas", consultaService.list());
         return "listarConsulta";
     }
