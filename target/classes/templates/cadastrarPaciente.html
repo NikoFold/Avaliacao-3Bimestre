@@ -32,7 +32,11 @@
         <br/>
 
         <label>Sexo:</label>
-        <input type="text" th:field="*{sexo}" required/><br/>
+        <select th:field="*{sexo}" required>
+        <option value="">-- Selecione um Gênero --</option>
+            <option value="Masculino">Masculino</option>
+            <option value="Feminino">Feminino</option>
+        </select><br/>
 	    <br/>
 	        
  <!-- Submit Button -->
