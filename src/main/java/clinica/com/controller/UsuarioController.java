@@ -41,10 +41,7 @@ public class UsuarioController {
 			model.addAttribute("roles", roleService.list());
 			return "cadastrarUsuario";
 		}
-		if (roles != null) {
-			List<Role> rolesSelecionadas = roleService.list().stream().filter(r -> roles.contains(r.getId())).toList();
-			usuario.setRoles(rolesSelecionadas);
-		}
+		
 		usuarioService.save(usuario);
 			model.addAttribute("mensagemSucesso", "Usuário " + usuario.getNome() + " salvo com sucesso");
 			model.addAttribute("usuario", new Usuario());
